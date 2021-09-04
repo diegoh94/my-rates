@@ -17,8 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [App\Http\Controllers\ContractController::class, 'create'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [App\Http\Controllers\ContractController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 Route::post('/contracts', [App\Http\Controllers\ContractController::class, 'store'])->middleware(['auth']);
+
+Route::get('/contracts/{contract}', [App\Http\Controllers\ContractController::class, 'show'])->middleware(['auth']);
 
 require __DIR__.'/auth.php';

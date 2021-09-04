@@ -24,7 +24,7 @@ class CreateRatesTable extends Migration
             $table->string('forty');
             $table->string('fortyhc');
 
-            $table->integer('contract_id')->unsigned()->;
+            $table->integer('contract_id')->unsigned();
             $table->foreign('contract_id')->references('id')->on('contracts');
 
             $table->timestamps();
