@@ -24,9 +24,9 @@ class ContractRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|max:255',
             'date' => 'required|date_format:Y-m-d|after_or_equal:now',
-            'file' => 'required|mimes:xlsx,csv'            
+            'file' => 'required|mimes:xlsx,xls,csv'            
         ];
     }
 }

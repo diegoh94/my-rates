@@ -36,7 +36,7 @@
                                     <td>{{$contract->name}}</td>
                                     <td class="text-center">{{$contract->date}}</td>
                                     <td class="text-center">
-                                        <a href="{{ url('/contracts/'.$contract->id) }}" class="py-1 px-2 bg-blue-500 text-sm text-white rounded-md">Ver tarifas</a>
+                                        <a href="{{ url('/contracts/'.$contract->id) }}" class="py-1 px-2 bg-blue-500 text-sm text-white rounded-md">Rates</a>
                                     </td>
                                 </tr>                                
                             @endforeach

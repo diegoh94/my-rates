@@ -11,14 +11,14 @@ use App\Models\Contract;
 
 class RatesImport implements ToModel, WithStartRow
 {
-    private $contractId;
-
     const COLUMN_POL_INDEX = 0;
     const COLUMN_POD_INDEX = 1;
     const COLUMN_CURR_INDEX = 4;
     const COLUMN_20GP_INDEX = 5;
     const COLUMN_40GP_INDEX = 6;
     const COLUMN_40HC_INDEX = 7;
+
+    private $contractId;
 
     public function __construct($contractId)
     {

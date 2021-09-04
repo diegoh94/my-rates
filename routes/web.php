@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [App\Http\Controllers\ContractController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
-
-Route::post('/contracts', [App\Http\Controllers\ContractController::class, 'store'])->middleware(['auth']);
-
-Route::get('/contracts/{contract}', [App\Http\Controllers\ContractController::class, 'show'])->middleware(['auth']);
+Route::middleware(['auth'])->group(function () {
+	Route::get('/dashboard', [App\Http\Controllers\ContractController::class, 'dashboard'])->name('dashboard'); // Listar todos los Contracts.
+	Route::post('/contracts', [App\Http\Controllers\ContractController::class, 'store']); // Procesar request para guardar en bd.
+	Route::get('/contracts/{contract}', [App\Http\Controllers\ContractController::class, 'show']); // Ver detalle de cada Contract (rates)
+});
 
 require __DIR__.'/auth.php';

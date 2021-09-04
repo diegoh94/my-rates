@@ -8,21 +8,21 @@
 	    @endif
 	    <div>
 	        <label for="name">Nombre</label>
-	        <input id="name" name="name" type="text" value="{{old('name')}}" placeholder="Nombre de la ruta">
+	        <input id="name" name="name" type="text" value="{{old('name')}}" minlength="2" maxlength="255" placeholder="Nombre de la ruta" required>
 	        @error('name')
 	            <p class="error">{{$message}}</p>
 	        @enderror
 	    </div>
 	    <div>
 	        <label for="date">Fecha</label>
-	        <input id="date" name="date" type="date" value="{{old('date')}}" required>
+	        <input id="date" name="date" type="date" value="{{old('date')}}" min="{{date('Y-m-d')}}" required>
 	        @error('date')
 	            <p class="error">{{$message}}</p>
 	        @enderror
 	    </div>
 	    <div>
 	        <label for="file">Archivo</label>
-	        <input id="file" name="file" type="file" value="{{old('file')}}" required>
+	        <input id="file" name="file" type="file" value="{{old('file')}}" accept=".xlsx,.xls,.csv" required>
 	        @error('file')
 	            <p class="error">{{$message}}</p>
 	        @enderror
