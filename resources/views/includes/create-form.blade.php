@@ -8,7 +8,8 @@
 	    @endif
 	    <div>
 	        <label for="name">Nombre</label>
-	        <input id="name" name="name" type="text" value="{{old('name')}}" minlength="2" maxlength="255" placeholder="Nombre de la ruta" required>
+	        <input id="name" name="name" type="text" value="{{old('name')}}" 
+	        zminlength="2" maxlength="255" placeholder="Nombre de la ruta" required>
 	        @error('name')
 	            <p class="error">{{$message}}</p>
 	        @enderror
