@@ -26,7 +26,15 @@ class ContractRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:255',
             'date' => 'required|date_format:Y-m-d|after_or_equal:now',
-            'file' => 'required|mimes:xlsx,xls,csv'            
+            // 'file' => 'required|mimes:csv,txt,xlsx,xls,application/octet-stream'            
+            // 'file' => 'required|mimes:csv,txt,xlsx,xls,application/octet-stream'            
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            // 'file.mimes' => 'You must upload an excel file: csv,xlsx,xls'
         ];
     }
 }

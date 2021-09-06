@@ -3,13 +3,13 @@
 namespace App\Imports;
 
 use Maatwebsite\Excel\Concerns\WithStartRow;
-
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 use App\Models\Rate;
 use Maatwebsite\Excel\Concerns\ToModel;
 use App\Models\Contract;
 
-class RatesImport implements ToModel, WithStartRow
+class RatesImport implements ToModel, WithStartRow, WithValidation
 {
     const COLUMN_POL_INDEX = 0;
     const COLUMN_POD_INDEX = 1;
@@ -51,12 +51,22 @@ class RatesImport implements ToModel, WithStartRow
     public function rules(): array
     {
         return [
-            self::COLUMN_POL_INDEX   => 'required|string',
-            self::COLUMN_POD_INDEX   => 'required|string',
-            self::COLUMN_CURR_INDEX  => 'required|string',
-            self::COLUMN_20GP_INDEX  => 'required|string',
-            self::COLUMN_40GP_INDEX  => 'required|string',
-            self::COLUMN_40HC_INDEX  => 'required|string',
+            self::COLUMN_POL_INDEX   => 'required|string|min:2',
+            self::COLUMN_POD_INDEX   => 'required|string|min:2',
+            self::COLUMN_CURR_INDEX  => 'required|string|size:3',
+            self::COLUMN_20GP_INDEX  => 'required|numeric',
+            self::COLUMN_40GP_INDEX  => 'required|numeric',
+            self::COLUMN_40HC_INDEX  => 'required|numeric',
         ];
     }
+
+    /*public function customValidationMessages()
+    {
+        return [
+            '0' => 'El campo POL no tiene un formato adecuado (columna A).',
+            '1' => 'El campo POL no tiene un formato adecuado (columna B).',
+            '4' => 'El campo POL no tiene un formato adecuado (columna F).',
+            '5' => 'El campo POL no tiene un formato adecuado (columna G).',
+        ];
+    }*/
 }

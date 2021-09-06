@@ -6,6 +6,23 @@
 	        <p>{{ session('notification') }}</p>
 	      </div>
 	    @endif
+
+	    @if (session('error'))
+	      <div class="bg-red-400 mx-3 py-2 text-white my-4">
+	        <p>{{ session('error') }}</p>
+	      </div>
+	    @endif
+
+	    @if ($errors->any())
+	      <div class="bg-red-400 mx-3 py-2 text-white my-4">
+	      	<ul>
+	      	@foreach ($errors->all() as $error)
+		        <li>{{ $error }}</li>
+	        @endforeach
+	        </ul>
+	      </div>
+	    @endif
+
 	    <div>
 	        <label for="name">Nombre</label>
 	        <input id="name" name="name" type="text" value="{{old('name')}}" 
