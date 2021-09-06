@@ -47,4 +47,16 @@ class RatesImport implements ToModel, WithStartRow
     {
         return 2;
     }
+
+    public function rules(): array
+    {
+        return [
+            self::COLUMN_POL_INDEX   => 'required|string',
+            self::COLUMN_POD_INDEX   => 'required|string',
+            self::COLUMN_CURR_INDEX  => 'required|string',
+            self::COLUMN_20GP_INDEX  => 'required|string',
+            self::COLUMN_40GP_INDEX  => 'required|string',
+            self::COLUMN_40HC_INDEX  => 'required|string',
+        ];
+    }
 }
